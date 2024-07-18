@@ -19,7 +19,7 @@ const Page=()=>{
     return (
         <div className="container">
             <DeliveryHeader />
-            <h1>Delivery Partner Login/SignUp</h1>
+            <h1 className="font-bold text-2xl">Delivery Partner Login/SignUp</h1>
             {login ? <DeliveryBoyLogin /> : <DeliveryBoySignup />}
 
             <div>

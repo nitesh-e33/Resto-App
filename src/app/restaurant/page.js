@@ -12,7 +12,7 @@ const Restaurant = () => {
     <>
       <div className="container">
         <RestaurantHeader  />
-        <h1>Restaurant Login/SignUp Page</h1>
+        <h1 className="font-bold text-2xl">Restaurant Login/SignUp Page</h1>
         {login ? <RestaurantLogin /> : <RestaurantSignup />}
         
         <div>
