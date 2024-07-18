@@ -1,6 +1,6 @@
 'use client'
-import CustomerHeader from "@/app/_components/CustomerHeader";
-import Footer from "@/app/_components/Footer";
+import CustomerHeader from "./../../_components/CustomerHeader";
+import Footer from "./../../_components/Footer";
 import { useEffect, useState } from "react";
 
 const Page=(props)=>{

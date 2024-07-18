@@ -2,7 +2,7 @@
 import { useState } from "react";
 import RestaurantLogin from "../_components/RestaurantLogin";
 import RestaurantSignup from "../_components/RestaurantSignup";
-import RestaurantHeader from "../_components/RestaurantHeader";
+import RestaurantHeader from "./../_components/RestaurantHeader";
 import Footer from "../_components/Footer";
 import './style.css';
 

@@ -99,6 +99,7 @@ table button {
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 350px;
+    color: #000;
 }
 .main-page-banner .select-input:focus, .search-input:focus {
     outline: none;

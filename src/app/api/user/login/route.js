@@ -1,5 +1,5 @@
-import { connectionStr } from "@/app/lib/db";
-import { userSchema } from "@/app/lib/userModel";
+import { connectionStr } from "../../../lib/db";
+import { userSchema } from "../../../lib/userModel";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 

@@ -1,5 +1,5 @@
-import { connectionStr } from "@/app/lib/db";
-import { foodSchema } from "@/app/lib/foodsModel";
+import { connectionStr } from "../../../../lib/db";
+import { foodSchema } from "../../../../lib/foodsModel";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -12,7 +12,7 @@ export async function GET(request, content) {
         success=true
     }
     return NextResponse.json({success,result})
-}
+}   
 
 export async function DELETE(request, content) {
     const id = content.params.id;

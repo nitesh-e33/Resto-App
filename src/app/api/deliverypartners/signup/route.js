@@ -1,5 +1,5 @@
-import { connectionStr } from "@/app/lib/db";
-import { deliveryPartnersSchema } from "@/app/lib/deliverypartnersModel";
+import { connectionStr } from "../../../lib/db";
+import { deliveryPartnersSchema } from "../../../lib/deliverypartnersModel";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 

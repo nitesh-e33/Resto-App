@@ -153,8 +153,8 @@ const FoodItemList = () => {
               <td className="py-2 px-4 border-b">{item.description}</td>
               <td className="py-2 px-4 border-b"><img src={item.img_path} alt={item.name} className="w-12 h-12" /></td>
               <td className="py-2 px-4 border-b">
-                <button className="btn btn-sm btn-primary" onClick={() => router.push(`dashboard/${item._id}`)}>Edit</button>
-                <button className="btn btn-sm btn-danger" onClick={() => handleShowModal(item._id)}>Delete</button>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => router.push(`dashboard/${item._id}`)}>Edit</button>
+              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleShowModal(item._id)}>Delete</button>
               </td>
             </tr>
           ))}
