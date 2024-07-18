@@ -82,7 +82,7 @@ table button {
     background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: multiply;
     padding: 30px;
-    height: 230px;
+    height: 270px;
     color: #fff;
     text-align: center;
 }
@@ -138,6 +138,7 @@ table button {
     border: 1px solid #aaa;
     border-radius: 5px;
     cursor: pointer;
+    height: 90px;
 }
 .restaurant-wrapper .heading-wrapper, .restaurant-wrapper .address-wrapper{
     padding-left: 15px;

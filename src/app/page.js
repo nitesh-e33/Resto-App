@@ -65,7 +65,7 @@ export default function Home() {
     <main>
       <CustomerHeader />
       <div className="main-page-banner">
-        <h1>Food Delivery App</h1>
+        <h1 className="text-4xl font-bold">Food Delivery App</h1>
         <div className="input-wrapper">
           <select value={selectedLocation} onChange={handleLocationChange} className="select-input">
             <option value="">Select Place</option>
@@ -84,9 +84,9 @@ export default function Home() {
             onClick={() => router.push(`explore/${item.name}?id=${item._id}`)}
             className="restaurant-wrapper"
           >
-            <div className="heading-wrapper">
-              <h3>{item.name}</h3>
-              <h5>Contact: {item.contact}</h5>
+            <div className="heading-wrapper font-bold">
+              <h3 className="text-xl">{item.name}</h3>
+              <h5 className="text-lg">Contact: {item.contact}</h5>
             </div>
             <div className="address-wrapper">
               <div>{item.city},</div>

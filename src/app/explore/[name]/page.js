@@ -49,11 +49,11 @@ const Page=(props)=>{
             <div className="restaurant-page-banner">
                 <h1>{decodeURI(name)}</h1>
             </div>
-            <div className="detail-wrapper">
-                <h4>Contact :{restaurantDetails?.contact}</h4>
-                <h4>City :{restaurantDetails?.city}</h4>
-                <h4>Address :{restaurantDetails?.address}</h4>
-                <h4>Email :{restaurantDetails?.email}</h4>
+            <div className="detail-wrapper h-16">
+                <h4 className="mt-4 font-bold">Contact :{restaurantDetails?.contact}</h4>
+                <h4 className="mt-4 font-bold">City :{restaurantDetails?.city}</h4>
+                <h4 className="mt-4 font-bold">Address :{restaurantDetails?.address}</h4>
+                <h4 className="mt-4 font-bold">Email :{restaurantDetails?.email}</h4>
             </div>
             <div className="food-item-wrapper">
                 {

@@ -55,28 +55,51 @@ const CustomerHeader=(props)=>{
     }
 
     return (
-        <div className="header-wrapper">
+        <div className="header-wrapper bg-white p-4 flex justify-between items-center">
             <div className="logo">
-                <img style={{width:100}} src="https://s.tmimgcdn.com/scr/1200x627/242400/food-delivery-custom-design-logo-template_242462-original.png" />
+            <img
+                className="w-24"
+                src="https://s.tmimgcdn.com/scr/1200x627/242400/food-delivery-custom-design-logo-template_242462-original.png"
+                alt="Logo"
+            />
             </div>
-            <ul>
-                <li><Link href="/">Home</Link></li>
-                {
-                    user ?
+            <ul className="flex space-x-4 text-black">
+                <li>
+                    <Link className="hover:underline" href="/">Home</Link>
+                </li>
+                {user ? (
                     <>
-                        <li><Link href="/myprofile">{user?.name}</Link></li>
-                        <li><button onClick={logout}>Logout</button></li>
-                    </> :
-                    <>
-                        <li><Link href="/user-auth">Login/Signup</Link></li>
+                    <li>
+                        <Link className="hover:underline" href="/myprofile">{user?.name}</Link>
+                    </li>
+                    <li>
+                        <button
+                        onClick={logout}
+                        className="hover:underline text-black"
+                        >
+                        Logout
+                        </button>
+                    </li>
                     </>
-                }
-                <li><Link href={cartNumber?"/cart":"#"}>Cart({cartNumber?cartNumber:0})</Link></li>
-                <li><Link href="/restaurant">Add Restaurant</Link></li>
-                <li><Link href="/deliverypartner">Delivery Partner</Link></li>
+                ) : (
+                    <>
+                    <li>
+                        <Link className="hover:underline" href="/user-auth">Login/Signup</Link>
+                    </li>
+                    </>
+                )}
+                <li>
+                    <Link className={`hover:underline ${cartNumber ? '' : 'cursor-not-allowed'}`} href={cartNumber ? "/cart" : "#"}>Cart({cartNumber ? cartNumber : 0})</Link>
+                </li>
+                <li>
+                    <Link className="hover:underline" href="/restaurant">Add Restaurant</Link>
+                </li>
+                <li>
+                    <Link className="hover:underline" href="/deliverypartner">Delivery Partner</Link>
+                </li>
             </ul>
         </div>
-    )
+    );
 }
 
 export default CustomerHeader;

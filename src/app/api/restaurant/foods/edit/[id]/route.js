@@ -1,4 +1,4 @@
-import { connectionStr } from "mongoose";
+import { connectionStr } from "../../../../../lib/db";
 import { foodSchema } from "../../../../../lib/foodsModel";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
