@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const { useRouter } = require("next/navigation");
 const { useState } = require("react");
 
@@ -33,12 +35,13 @@ const DeliveryBoySignup=()=>{
         });
         response = await response.json();
         if(response.success) {
+            toast.success('User Registered Successfully!!');
             const {result} = response;
             delete result.password;
             localStorage.setItem('delivery', JSON.stringify(result));
             router.push('/deliverydashboard');
         } else {
-            alert('User SignUp failed');
+            toast.error('User Signup failed');
         }
     }
 

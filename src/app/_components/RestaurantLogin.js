@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const RestaurantLogin=()=>{
     const [email, setEmail] = useState();
@@ -15,20 +16,19 @@ const RestaurantLogin=()=>{
         } else {
             setError(false);
         }
-        // console.log(email,password);
         let response = await fetch("http://localhost:3000/api/restaurant", {
             method:"POST",
             body:JSON.stringify({email,password,login:true})
         })
         response = await response.json();
         if(response.success){
-            // alert('Login Successfully');
+            toast.success("Login Successfully");
             const {result} = response
             delete result.password
             localStorage.setItem("restaurantUser", JSON.stringify(result));
             router.push('restaurant/dashboard');
         } else {
-            alert('Login Failed');
+            toast.error("Login Failed. Please try again later!!");
         }
     }
     return (

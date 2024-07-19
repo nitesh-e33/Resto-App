@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const DeliveryBoyLogin=()=>{
     const [loginMobile, setLoginMobile] = useState('');
@@ -21,12 +22,13 @@ const DeliveryBoyLogin=()=>{
         });
         response = await response.json();
         if(response.success) {
+            toast.success('Login Successfully.');
             const {result} = response;
             delete result.password;
             localStorage.setItem('delivery', JSON.stringify(result));
             router.push('/deliverydashboard');
         } else {
-            alert('Login failed. Please try again with valid data.');
+            toast.error('Login failed. Please try again with valid data.')
         }
     }
 

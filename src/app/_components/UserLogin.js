@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const UserLogin=(props)=>{
     const [email, setEmail] = useState('');
@@ -18,6 +19,7 @@ const UserLogin=(props)=>{
         });
         response = await response.json();
         if(response.success) {
+            toast.success("User Login Successfully");
             const {result} = response;
             delete result.password;
             localStorage.setItem('user', JSON.stringify(result));
@@ -27,7 +29,7 @@ const UserLogin=(props)=>{
                 router.push('/');
             }
         } else {
-            alert('Login failed. Please try again with valid data.');
+          toast.error("Login failed. Please try again with valid data.");
         }
     }
     return (

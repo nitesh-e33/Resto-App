@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const UserSignUp=(props)=>{
     const [name, setName] = useState('');
@@ -30,6 +31,7 @@ const UserSignUp=(props)=>{
         });
         response = await response.json();
         if(response.success) {
+            toast.success("User Signup Successfully!!");
             const {result} = response;
             delete result.password;
             localStorage.setItem('user', JSON.stringify(result));
@@ -39,7 +41,7 @@ const UserSignUp=(props)=>{
                 router.push('/');
             }
         } else {
-            alert('User SignUp failed');
+            toast.error("User Signup failed.");
         }
     }
 
