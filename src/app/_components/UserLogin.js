@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../lib/constant";
 
 const UserLogin=(props)=>{
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const UserLogin=(props)=>{
             setError(true);
             return false;
         }
-        let response = await fetch("http://localhost:3000/api/user/login",{
+        let response = await fetch(`${API_BASE_URL}/user/login`,{
             method:"POST",
             body:JSON.stringify({email, password})
         });

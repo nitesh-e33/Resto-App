@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import CustomerHeader from "../_components/CustomerHeader";
 import Footer from "../_components/Footer";
-import { DELIVERY_CHARGES, TAX } from "../lib/constant";
+import { API_BASE_URL, DELIVERY_CHARGES, TAX } from "../lib/constant";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -27,7 +27,7 @@ const Page=()=>{
 
         let cart = JSON.parse(localStorage.getItem('cart')); 
         let foodItemIds = cart.map((item)=>item._id).toString();
-        let deliveryBoyResponse = await fetch('http://localhost:3000/api/deliverypartners/'+city)
+        let deliveryBoyResponse = await fetch(`${API_BASE_URL}/deliverypartners/`+city)
         deliveryBoyResponse = await deliveryBoyResponse.json();
         let deliveryBoyIds = deliveryBoyResponse.result.map((item)=>item._id);
         let deliveryBoy_id = deliveryBoyIds[Math.floor(Math.random()*deliveryBoyIds.length)]
@@ -47,7 +47,7 @@ const Page=()=>{
             amount:total+DELIVERY_CHARGES+(total*TAX/100),
         }
         // console.log(collection);
-        let response = await fetch("http://localhost:3000/api/order",{
+        let response = await fetch(`${API_BASE_URL}/order`,{
             method:'POST',
             body:JSON.stringify(collection)
         });

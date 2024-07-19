@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../lib/constant";
 
 const DeliveryBoyLogin=()=>{
     const [loginMobile, setLoginMobile] = useState('');
@@ -16,7 +17,7 @@ const DeliveryBoyLogin=()=>{
             setError(false);
         }
 
-        let response = await fetch("http://localhost:3000/api/deliverypartners/login",{
+        let response = await fetch(`${API_BASE_URL}/deliverypartners/login`,{
             method:"POST",
             body:JSON.stringify({mobile:loginMobile, password:loginPassword})
         });

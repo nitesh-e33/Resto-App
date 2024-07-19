@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../lib/constant";
 
 const { useRouter } = require("next/navigation");
 const { useState } = require("react");
@@ -29,7 +30,7 @@ const DeliveryBoySignup=()=>{
             setError(false);
         }
 
-        let response = await fetch("http://localhost:3000/api/deliverypartners/signup",{
+        let response = await fetch(`${API_BASE_URL}/deliverypartners/signup`,{
             method:"POST",
             body:JSON.stringify({name,mobile,password,city,address})
         });

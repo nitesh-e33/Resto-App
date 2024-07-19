@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../lib/constant";
 
 const AddFoodItem=(props)=>{
     const [name, setName] = useState("");
@@ -20,7 +21,7 @@ const AddFoodItem=(props)=>{
         if(restaurantData) {
             resto_id = restaurantData._id;
         }
-        let response = await fetch("http://localhost:3000/api/restaurant/foods", {
+        let response = await fetch(`${API_BASE_URL}/restaurant/foods`, {
             method:"POST",
             body:JSON.stringify({name,price,img_path:path,description,resto_id})
         })

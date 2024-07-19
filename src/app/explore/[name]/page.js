@@ -1,4 +1,5 @@
 'use client'
+import { API_BASE_URL } from "../../lib/constant";
 import CustomerHeader from "./../../_components/CustomerHeader";
 import Footer from "./../../_components/Footer";
 import { useEffect, useState } from "react";
@@ -20,7 +21,7 @@ const Page=(props)=>{
 
     const loadRestaurantDetails=async()=>{
         const id = props.searchParams.id;
-        let response = await fetch("http://localhost:3000/api/customer/"+id);
+        let response = await fetch(`${API_BASE_URL}/customer/`+id);
         response = await response.json();
         if(response.success) {
             setRestaurantDetails(response.details)

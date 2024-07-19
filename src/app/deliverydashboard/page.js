@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import DeliveryHeader from "../_components/DeliveryHeader";
 import { useRouter } from "next/navigation";
+import { API_BASE_URL } from "../lib/constant";
 
 const Page=()=>{
     const router = useRouter();
@@ -13,7 +14,7 @@ const Page=()=>{
     
     const getMyOrders=async()=>{
         const deliveryData = JSON.parse(localStorage.getItem('delivery'));
-        let response = await fetch("http://localhost:3000/api/deliverypartners/orders/"+deliveryData?._id);
+        let response = await fetch(`${API_BASE_URL}/deliverypartners/orders/`+deliveryData?._id);
         response = await response.json();
         console.log(response);
         if(response.success) {

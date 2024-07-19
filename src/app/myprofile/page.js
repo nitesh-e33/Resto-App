@@ -2,6 +2,7 @@
 import { useState , useEffect } from "react";
 import CustomerHeader from "../_components/CustomerHeader";
 import Footer from "../_components/Footer";
+import { API_BASE_URL } from "../lib/constant";
 
 const Page=()=>{
     const [myOrders, setMyOrders] = useState([]);
@@ -11,7 +12,7 @@ const Page=()=>{
     
     const getMyOrders=async()=>{
         const userStorage = JSON.parse(localStorage.getItem('user'));
-        let response = await fetch("http://localhost:3000/api/order?id="+userStorage._id);
+        let response = await fetch(`${API_BASE_URL}/order?id=`+userStorage._id);
         response = await response.json();
         if(response.success) {
             setMyOrders(response.result);

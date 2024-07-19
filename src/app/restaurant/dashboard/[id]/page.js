@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import RestaurantHeader from "../../../_components/RestaurantHeader";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../../lib/constant";
 
 const EditFoodItems=(props)=>{
     const [name, setName] = useState("");
@@ -18,7 +19,7 @@ const EditFoodItems=(props)=>{
     }, []);
 
     const handleLoadFoodItem = async() => {
-        let response = await fetch("http://localhost:3000/api/restaurant/foods/edit/" + props.params.id);
+        let response = await fetch(`${API_BASE_URL}/restaurant/foods/edit/` + props.params.id);
         response = await response.json();
         if(response.success) {
             setName(response.result.name);
@@ -38,7 +39,7 @@ const EditFoodItems=(props)=>{
         } else {
             setError(false);
         }
-        let response = await fetch("http://localhost:3000/api/restaurant/foods/edit/" + props.params.id,{
+        let response = await fetch(`${API_BASE_URL}/restaurant/foods/edit/` + props.params.id,{
             method:"PUT",
             body:JSON.stringify({name, price, img_path:path, description})
         });

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DeleteModal from "./modal/DeleteModal";
+import { API_BASE_URL } from "../lib/constant";
 
 const FoodItemList = () => {
   const [foodItems, setFoodItems] = useState([]);
@@ -18,7 +19,7 @@ const FoodItemList = () => {
     const restaurantData = JSON.parse(localStorage.getItem("restaurantUser"));
     if (restaurantData) {
       const resto_id = restaurantData._id;
-      let response = await fetch(`http://localhost:3000/api/restaurant/foods/${resto_id}`);
+      let response = await fetch(`${API_BASE_URL}/restaurant/foods/${resto_id}`);
       response = await response.json();
       if (response.success) {
         setFoodItems(response.result);
@@ -39,7 +40,7 @@ const FoodItemList = () => {
   };
 
   const handleConfirmDelete = async () => {
-    let response = await fetch(`http://localhost:3000/api/restaurant/foods/${itemId}`, {
+    let response = await fetch(`${API_BASE_URL}/restaurant/foods/${itemId}`, {
       method: "DELETE"
     });
     response = await response.json();
@@ -75,8 +76,8 @@ const FoodItemList = () => {
               <td className="py-2 px-4 border-b">{item.description}</td>
               <td className="py-2 px-4 border-b"><img src={item.img_path} alt={item.name} className="w-12 h-12" /></td>
               <td className="py-2 px-4 border-b">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => router.push(`dashboard/${item._id}`)}>Edit</button>
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleShowModal(item._id)}>Delete</button>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded" onClick={() => router.push(`dashboard/${item._id}`)}>Edit</button>
+              <button className="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded" onClick={() => handleShowModal(item._id)}>Delete</button>
               </td>
             </tr>
           ))}

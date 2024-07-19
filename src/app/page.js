@@ -3,6 +3,7 @@ import CustomerHeader from "./_components/CustomerHeader";
 import Footer from "./_components/Footer";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_BASE_URL } from './lib/constant';
 
 export default function Home() {
   const [locations, setLocations] = useState([]);
@@ -18,7 +19,7 @@ export default function Home() {
 
   const loadLocations = async () => {
     try {
-      let response = await fetch("http://localhost:3000/api/customer/locations");
+      let response = await fetch(`${API_BASE_URL}/customer/locations`);
       response = await response.json();
       if (response.success) {
         setLocations(response.result);
@@ -30,7 +31,7 @@ export default function Home() {
 
   const loadRestaurants = async (params = {}) => {
     try {
-      let url = "http://localhost:3000/api/customer";
+      let url = `${API_BASE_URL}/customer`;
       const queryParams = new URLSearchParams(params).toString();
       if (queryParams) {
         url += `?${queryParams}`;
