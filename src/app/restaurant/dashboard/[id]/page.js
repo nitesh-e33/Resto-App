@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import RestaurantHeader from "../../../_components/RestaurantHeader";
+import { toast } from "react-toastify";
 
 const EditFoodItems=(props)=>{
     const [name, setName] = useState("");
@@ -24,7 +26,7 @@ const EditFoodItems=(props)=>{
             setPath(response.result.img_path);
             setDescription(response.result.description);
         } else {
-            alert("Data Not Found");
+            toast.error("Data Not FOund");
         }
     }
 
@@ -42,19 +44,21 @@ const EditFoodItems=(props)=>{
         });
         response = await response.json();
         if(response.success) {
+            toast.success("Food Item Updated successfully!");
             router.push("../dashboard");
         } else {
-            alert("Data is not updated. Please try again!!")
+            toast.error("Data is not updated. Please try again!!");
         }
     }
 
     return (
         <div className="container mx-auto p-4">
+            <RestaurantHeader />
             <h1 className="text-2xl font-bold mb-4">Update Food Item</h1>
             <div className="mb-4">
             <input
                 type="text"
-                className="input-field w-full p-2 border border-gray-300 rounded"
+                className="p-1 border border-gray-300 rounded"
                 placeholder="Enter food name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -64,7 +68,7 @@ const EditFoodItems=(props)=>{
             <div className="mb-4">
             <input
                 type="text"
-                className="input-field w-full p-2 border border-gray-300 rounded"
+                className="p-1 border border-gray-300 rounded"
                 placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -74,7 +78,7 @@ const EditFoodItems=(props)=>{
             <div className="mb-4">
             <input
                 type="text"
-                className="input-field w-full p-2 border border-gray-300 rounded"
+                className="p-1 border border-gray-300 rounded"
                 placeholder="Enter path name"
                 value={path}
                 onChange={(e) => setPath(e.target.value)}
@@ -84,7 +88,7 @@ const EditFoodItems=(props)=>{
             <div className="mb-4">
             <input
                 type="text"
-                className="input-field w-full p-2 border border-gray-300 rounded"
+                className="p-1 border border-gray-300 rounded"
                 placeholder="Enter description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -93,7 +97,7 @@ const EditFoodItems=(props)=>{
             </div>
             <div>
             <button
-                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+                className="bg-blue-500 text-white w-56 p-1 rounded hover:bg-blue-600"
                 onClick={handleEditFoodItem}
             >
                 Update Food Item

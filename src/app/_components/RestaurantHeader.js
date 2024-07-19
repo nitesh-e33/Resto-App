@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const RestaurantHeader = () => {
     const [details, setDetails] = useState();
@@ -20,6 +21,7 @@ const RestaurantHeader = () => {
     }, [])
     const logout=()=>{
         localStorage.removeItem('restaurantUser');
+        toast.success("Logout Successfully!!")
         router.push('/restaurant');
     }
     return (

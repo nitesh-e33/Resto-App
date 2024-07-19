@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddFoodItem=(props)=>{
     const [name, setName] = useState("");
@@ -8,7 +9,6 @@ const AddFoodItem=(props)=>{
     const [error, setError] = useState(false);
 
     const handleAddFoodItem=async()=>{
-        // console.log(name,path,price,description);
         if(!name || !path || !price || !description) {
             setError(true);
             return false;
@@ -26,10 +26,10 @@ const AddFoodItem=(props)=>{
         })
         response = await response.json();
         if(response.success) {
-            alert("Food Item Added");
+            toast.success("Food Item Added Successfully");
             props.setAddItem(false);
         } else {
-            alert("Food Item not Added");
+            toast.error("Food Item not Added");
         }
     }
 
@@ -39,7 +39,7 @@ const AddFoodItem=(props)=>{
           <div className="mb-4">
             <input
               type="text"
-              className="input-field w-full p-2 border border-gray-300 rounded"
+              className="p-1 border border-gray-300 rounded"
               placeholder="Enter food name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -49,7 +49,7 @@ const AddFoodItem=(props)=>{
           <div className="mb-4">
             <input
               type="text"
-              className="input-field w-full p-2 border border-gray-300 rounded"
+              className="p-1 border border-gray-300 rounded"
               placeholder="Enter price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -59,7 +59,7 @@ const AddFoodItem=(props)=>{
           <div className="mb-4">
             <input
               type="text"
-              className="input-field w-full p-2 border border-gray-300 rounded"
+              className="p-1 border border-gray-300 rounded"
               placeholder="Enter path name"
               value={path}
               onChange={(e) => setPath(e.target.value)}
@@ -69,7 +69,7 @@ const AddFoodItem=(props)=>{
           <div className="mb-4">
             <input
               type="text"
-              className="input-field w-full p-2 border border-gray-300 rounded"
+              className="p-1 border border-gray-300 rounded"
               placeholder="Enter description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -78,7 +78,7 @@ const AddFoodItem=(props)=>{
           </div>
           <div>
             <button
-              className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              className="bg-blue-500 text-white w-56 p-1 rounded hover:bg-blue-600"
               onClick={handleAddFoodItem}
             >
               Add Food Item
