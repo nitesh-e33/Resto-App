@@ -22,7 +22,7 @@ const DeliveryHeader=(props)=>{
     }
 
     return (
-        <div className="header-wrapper">
+        <div className="header-wrapper bg-white p-4 flex justify-between items-center">
             <div className="logo">
                 <img style={{width:100}} src="https://s.tmimgcdn.com/scr/1200x627/242400/food-delivery-custom-design-logo-template_242462-original.png" />
             </div>

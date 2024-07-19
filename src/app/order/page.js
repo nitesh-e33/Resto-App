@@ -66,7 +66,7 @@ const Page=()=>{
             <CustomerHeader removeCartData={removeCartData} />
             <div className="total-wrapper">
                 <div className="block-1">
-                    <h2>User Details</h2>
+                    <h2 className="text-2xl font-bold ml-4">User Details</h2>
                     <div className="row">
                         <span>Name : </span>
                         <span>{userStorage.name}</span>
@@ -79,7 +79,7 @@ const Page=()=>{
                         <span>Mobile No. : </span>
                         <span>{userStorage.mobile}</span>
                     </div>
-                    <h2>Amount Details</h2>
+                    <h2 className="text-2xl font-bold ml-4">Amount Details</h2>
                     <div className="row">
                         <span>Food Charges : </span>
                         <span>{total}</span>
@@ -96,7 +96,7 @@ const Page=()=>{
                         <span>Total Amount : </span>
                         <span>{total+DELIVERY_CHARGES+(total*TAX/100)}</span>
                     </div>
-                    <h2>Payment Method</h2>
+                    <h2 className="text-2xl font-bold ml-4">Payment Method</h2>
                     <div className="row">
                         <span>Cash on Delivery : </span>
                         <span>Rs {total+DELIVERY_CHARGES+(total*TAX/100)}</span>
