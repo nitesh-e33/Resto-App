@@ -4,6 +4,7 @@ import CustomerHeader from "../_components/CustomerHeader";
 import Footer from "../_components/Footer";
 import { DELIVERY_CHARGES, TAX } from "../lib/constant";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Page=()=>{
     const [cartStorage, setCartStorage] = useState(JSON.parse(localStorage.getItem('cart')));
@@ -16,6 +17,7 @@ const Page=()=>{
         if(JSON.parse(localStorage.getItem('user'))){
             router.push('/order');
         } else {
+            toast.warn("please login before oder any food.");
             router.push('/user-auth?order=true');
         }
     }

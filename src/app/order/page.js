@@ -4,6 +4,7 @@ import CustomerHeader from "../_components/CustomerHeader";
 import Footer from "../_components/Footer";
 import { DELIVERY_CHARGES, TAX } from "../lib/constant";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Page=()=>{
     const [userStorage, setUserStorage] = useState(JSON.parse(localStorage.getItem('user')));
@@ -31,7 +32,7 @@ const Page=()=>{
         let deliveryBoyIds = deliveryBoyResponse.result.map((item)=>item._id);
         let deliveryBoy_id = deliveryBoyIds[Math.floor(Math.random()*deliveryBoyIds.length)]
         if(!deliveryBoy_id) {
-            alert('Delivery Partner is not available')
+            toast.error('Delivery Partner is not available.');
             return false;
         }
 
@@ -52,11 +53,11 @@ const Page=()=>{
         });
         response = await response.json();
         if(response.success) {
-            alert("Order Confirmed");
+            toast.success('Order Confirmed');
             setRemoveCartData(true);
             router.push('myprofile');
         } else {
-            alert("Order Failed");
+            toast.error('Order Failed');
         }
     }
 
